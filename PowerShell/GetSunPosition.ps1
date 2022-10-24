@@ -43,7 +43,7 @@
 #>
 function Get-SunPosition
 {
-    [CmdletBinding(PositionalBinding = $true, SupportsPaging = $false)]
+    [CmdletBinding(PositionalBinding = $false, SupportsPaging = $false)]
     Param(
         [Parameter(Position=0, Mandatory=$true, ValueFromPipelineByPropertyName=$true)][ValidateRange(-90.0, 90.0)][decimal]$Latitude,
         [Parameter(Position=1, Mandatory=$true, ValueFromPipelineByPropertyName=$true)][ValidateRange(-180.0, 180.0)][decimal]$Longtitude,
