@@ -25,17 +25,17 @@
     Text description of calculated sun position values or array of values.
 .EXAMPLE
     Get-SunPosition 52.516227 13.377663
-    Calculating sun position at Latitude: 52.516227, Longtitude: 13.377663, at date: 2022-10-23 17:20:08
+    Calculated sun position at Latitude: 52.516227, Longtitude: 13.377663, at date: 2022-10-23 17:20:08
     Altitude (deg): 12.0606868529465
     Azimuth (deg): 232.37296179594
 .EXAMPLE
     Get-SunPosition 52.516227 13.377663 -Date "2022-10-19 16:30:00"
-    Calculating sun position at Latitude: 52.516227, Longtitude: 13.377663, at date: 2022-10-19 16:30:00
+    Calculated sun position at Latitude: 52.516227, Longtitude: 13.377663, at date: 2022-10-19 16:30:00
     Altitude (deg): 18.9875059751445
     Azimuth (deg): 221.486847081189
 .EXAMPLE
     Get-SunPosition 52.516227 13.377663 -Date "2022-10-19 16:30:00" -OutputRadians
-    Calculating sun position at Latitude: 52.516227, Longtitude: 13.377663, at date: 2022-10-19 16:30:00
+    Calculated sun position at Latitude: 52.516227, Longtitude: 13.377663, at date: 2022-10-19 16:30:00
     Altitude (rad): 0.331394496008369
     Azimuth (rad): 0.724082077838147
 .LINK
@@ -54,11 +54,6 @@ function Get-SunPosition
 
     Process
     {
-        if(-not $OutputAsObject)
-        {
-            Write-Host "Calculating sun position at Latitude: $($Latitude), Longtitude: $($Longtitude), at date: $($Date.ToString("yyyy-MM-dd HH:mm:ss"))" -ForegroundColor Yellow
-        }
-
         # Simplified variables:
         $Math = [System.Math]
         $PI = $Math::PI
@@ -113,6 +108,7 @@ function Get-SunPosition
         }
         else
         {
+            Write-Host "Calculated sun position at Latitude: $($Latitude), Longtitude: $($Longtitude), at date: $($Date.ToString("yyyy-MM-dd HH:mm:ss"))" -ForegroundColor Yellow
             Write-Host "Altitude ($($postfix)): $($Altitude)" -ForegroundColor Green
             Write-Host "Azimuth ($($postfix)): $($Azimuth)" -ForegroundColor Green
         }
